@@ -8,7 +8,7 @@ from flask_swagger import swagger
 from flask_cors import CORS
 from utils import APIException, generate_sitemap
 from admin import setup_admin
-from models import db, User
+from models import db, User, Characters, Planets, Favorites
 #from models import Person
 
 app = Flask(__name__)
@@ -44,6 +44,36 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+@app.route('/characters', methods=['GET'])
+def handle_get_characters():
+    response_body = {
+        "msg": "Hello, this your GET /characters response"
+    }
+
+@app.route('/characters/<int:id>', methods=['GET'])
+def handle_get_character():
+    response_body = {
+        "msg": "Hello, this your GET /character response"
+    }
+
+@app.route('/planets', methods=['GET'])
+def handle_get_planets():
+    response_body = {
+        "msg": "Hello, this your GET /planets response"
+    }
+
+@app.route('/planets/<int:id>', methods=['GET'])
+def handle_get_planet():
+    response_body = {
+        "msg": "Hello, this your GET /planet response"
+    }
+
+@app.route('/favorites/<int:id>', methods=['GET'])
+def handle_get_favorites():
+    response_body = {
+        "msg": "Hello, this your GET /favorites response"
+    }
 
 # this only runs if `$ python src/app.py` is executed
 if __name__ == '__main__':
