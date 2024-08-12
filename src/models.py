@@ -55,9 +55,35 @@ class Characters(db.Model):
     hair_color = db.Column(db.String(250))
     eye_color = db.Column(db.String(250))
 
+    def __init__(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "character_name": self.character_name,
+            "gender": self.gender,
+            "hair_color": self.hair_color,
+            "eye_color": self.eye_color
+        }
+
 class Planets(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     planet_name = db.Column(db.String(250))
     climate = db.Column(db.String(250))
     diameter = db.Column(db.String(250))
     gravity = db.Column(db.String(250))
+
+    def __init__(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "planet_name": self.planet_name,
+            "climate": self.climate,
+            "diameter": self.diameter,
+            "gravity": self.gravity
+        }
